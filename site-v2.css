@@ -283,3 +283,34 @@ footer { background: var(--ink-sunken); border-top: 1px solid var(--line); paddi
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce){ .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* ============================================================================
+   Mobile nav menu (hamburger) — Phase 1 mobile. Mantiene los enlaces del nav
+   accesibles en móvil/tablet (donde .nav-links se oculta).
+   ========================================================================== */
+.nav-toggle{ display: none; }
+@media (max-width: 920px){
+  .nav-toggle{
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 42px; height: 42px; flex-shrink: 0; margin-left: 4px; padding: 0; cursor: pointer;
+    background: transparent; border: 1px solid var(--line); border-radius: 10px;
+  }
+  .nav-toggle span{ display: block; width: 18px; height: 2px; margin: 0 auto; border-radius: 2px;
+    background: var(--text-hi); transition: transform .25s var(--ease), opacity .2s var(--ease); }
+  .nav.menu-open .nav-toggle span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .nav.menu-open .nav-toggle span:nth-child(2){ opacity: 0; }
+  .nav.menu-open .nav-toggle span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-links{
+    display: flex !important; position: absolute; top: 64px; left: 0; right: 0;
+    flex-direction: column; gap: 0; margin: 0; padding: 6px 24px 14px;
+    background: var(--ink-base, #0a0d14); border-bottom: 1px solid var(--line);
+    box-shadow: 0 26px 50px -26px rgba(0,0,0,0.7);
+    opacity: 0; transform: translateY(-10px); pointer-events: none;
+    transition: opacity .2s var(--ease), transform .2s var(--ease);
+  }
+  .nav.menu-open .nav-links{ opacity: 1; transform: none; pointer-events: auto; }
+  .nav-links a{ padding: 13px 2px; font-size: 16px; color: var(--text-mid); border-bottom: 1px solid var(--line); }
+  .nav-links a:last-child{ border-bottom: 0; }
+  .nav-links a:hover, .nav-links a.active{ color: var(--text-hi); }
+}

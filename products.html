@@ -57,6 +57,7 @@
     <div class="nav-right">
       <a class="btn btn-header" href="index.html#contact">Request a briefing</a>
     </div>
+    <button class="nav-toggle" type="button" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -152,5 +153,6 @@
   const io = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.14 });
   document.querySelectorAll('.r-up').forEach(el => io.observe(el));
 </script>
+<script src="nav.js"></script>
 </body>
 </html>

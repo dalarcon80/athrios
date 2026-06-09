@@ -65,6 +65,15 @@ img, svg { display: block; }
 .nav-right .briefing { font-size: 14px; color: var(--text-mid); }
 .nav-right .briefing:hover { color: var(--text-hi); }
 @media (max-width: 920px){ .nav-links { display: none; } }
+/* Mobile nav — en pantallas estrechas el CTA + "All products" se salían junto
+   al logo. Ocultamos el enlace secundario (está en el footer) y ajustamos el
+   botón para que quepan logo + CTA sin recorte. */
+@media (max-width: 640px){
+  .nav .wrap { gap: 12px; }
+  .nav-right { gap: 10px; }
+  .nav-right .briefing { display: none; }
+  .nav-right .btn { padding: 9px 14px; font-size: 13px; white-space: nowrap; }
+}
 
 /* light-nav variant for interior paper pages */
 .nav.light .brand .wm { color: var(--ink-hi); }
@@ -277,3 +286,48 @@ footer { background: var(--ink-sunken); border-top: 1px solid var(--line); paddi
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce){ .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* ============================================================================
+   Mobile nav menu (hamburger) + brand lockup — Phase 1 mobile.
+   ========================================================================== */
+/* "Xavio by Athrios": mantener "by Athrios" en una pieza y, en móvil, bajarlo
+   a su propia línea bajo "Xavio" (anula el margin inline). */
+.nav .brand .wm > span{ white-space: nowrap; }
+@media (max-width: 640px){
+  .nav .brand .wm > span{ display: block; margin-left: 0 !important; }
+}
+
+/* Hamburguesa: oculta en escritorio, visible donde .nav-links se oculta. */
+.nav-toggle{ display: none; }
+@media (max-width: 920px){
+  .nav-toggle{
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 42px; height: 42px; flex-shrink: 0; margin-left: 4px; padding: 0; cursor: pointer;
+    background: transparent; border: 1px solid var(--line); border-radius: 10px;
+  }
+  .nav-toggle span{ display: block; width: 18px; height: 2px; margin: 0 auto; border-radius: 2px;
+    background: var(--text-hi); transition: transform .25s var(--ease), opacity .2s var(--ease); }
+  .nav.menu-open .nav-toggle span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .nav.menu-open .nav-toggle span:nth-child(2){ opacity: 0; }
+  .nav.menu-open .nav-toggle span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  /* .nav-links pasa a panel desplegable bajo la barra */
+  .nav-links{
+    display: flex !important; position: absolute; top: 64px; left: 0; right: 0;
+    flex-direction: column; gap: 0; margin: 0; padding: 6px 24px 14px;
+    background: var(--ink-base, #0a0d14); border-bottom: 1px solid var(--line);
+    box-shadow: 0 26px 50px -26px rgba(0,0,0,0.7);
+    opacity: 0; transform: translateY(-10px); pointer-events: none;
+    transition: opacity .2s var(--ease), transform .2s var(--ease);
+  }
+  .nav.menu-open .nav-links{ opacity: 1; transform: none; pointer-events: auto; }
+  .nav-links a{ padding: 13px 2px; font-size: 16px; color: var(--text-mid); border-bottom: 1px solid var(--line); }
+  .nav-links a:last-child{ border-bottom: 0; }
+  .nav-links a:hover, .nav-links a.active{ color: var(--text-hi); }
+
+  /* páginas claras (interior) */
+  .nav.light .nav-toggle{ border-color: var(--line-paper); }
+  .nav.light .nav-toggle span{ background: var(--ink-hi); }
+  .nav.light .nav-links{ background: var(--paper, #fbfaf7); border-color: var(--line-paper); }
+  .nav.light .nav-links a{ color: var(--ink-mid); border-color: var(--line-paper); }
+}
