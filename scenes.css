@@ -1,0 +1,48 @@
+/* ============================================================================
+   Scroll Scenes — whole-scene reveal (index.html canonical)
+   Each scene fills one viewport. When it scrolls into view the ENTIRE scene
+   reveals at once (with a short premium stagger). Leaves view → resets, so
+   scrolling back up replays it. No long pinned phase-scrubbing.
+   ========================================================================== */
+
+/* ── DESKTOP: one scene per screen, full reveal on enter ────────────────── */
+/* Hidden state is gated behind .scenes-on (added by JS). Without JS, on mobile,
+   or under reduced-motion, ALL content stays visible — never a blank screen. */
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference){
+  .scroll-scene { position: relative; }
+  .scroll-scene > .scene-pin {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 0;
+  }
+  /* Products scene is content-tall: pin to top (clear of the 64px nav) so its
+     header is never hidden under the sticky nav and the console fits cleanly. */
+  #products.scroll-scene > .scene-pin {
+    justify-content: flex-start;
+    padding: 84px 0 30px;
+  }
+
+  /* steps start hidden ONLY when the scene system is on */
+  .scenes-on .scene-step {
+    opacity: 0; transform: translateY(28px) scale(0.99); filter: blur(6px);
+    transition: opacity 0.6s cubic-bezier(.2,.8,.2,1),
+                transform 0.7s cubic-bezier(.2,.8,.2,1),
+                filter 0.6s cubic-bezier(.2,.8,.2,1);
+    will-change: opacity, transform, filter;
+  }
+  .scenes-on .scroll-scene.is-in .scene-step { opacity: 1; transform: none; filter: none; }
+  /* short cumulative stagger so the full scene lands within ~0.7s */
+  .scenes-on .scroll-scene.is-in [data-phase="1"] { transition-delay: 0.02s; }
+  .scenes-on .scroll-scene.is-in [data-phase="2"] { transition-delay: 0.12s; }
+  .scenes-on .scroll-scene.is-in [data-phase="3"] { transition-delay: 0.22s; }
+  .scenes-on .scroll-scene.is-in [data-phase="4"] { transition-delay: 0.32s; }
+  .scenes-on .scroll-scene.is-in [data-phase="5"] { transition-delay: 0.42s; }
+  .scenes-on .scroll-scene.is-in [data-phase="6"] { transition-delay: 0.52s; }
+  .scenes-on .scroll-scene.is-in [data-phase="7"] { transition-delay: 0.62s; }
+}
+
+/* ── MOBILE / reduced-motion: plain stacked, everything visible ─────────── */
+@media (max-width: 860px), (prefers-reduced-motion: reduce){
+  .scroll-scene > .scene-pin { padding: 0; display: block; }
+  .scene-step { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
