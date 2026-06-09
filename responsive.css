@@ -118,3 +118,51 @@ html, body { overflow-x: hidden; }
   .hero-stage { min-height: 560px; }
   .vos-chapter .cc-num { font-size: 9px; }
 }
+
+/* ============================================================================
+   Mobile Phase 1 — saneamiento responsive. Desktop sin cambios.
+   Breakpoint a 820px para cubrir la zona muerta 681–820px (phablets/tablets
+   pequeñas) donde las rejillas ya apilan pero los consoles aún recortaban.
+   ========================================================================== */
+@media (max-width: 820px){
+  /* Conversion Gap — la insignia "ATHRIOS CLOSES THE GAP / GOVERNED CONVERSION"
+     se salía por la derecha (position:absolute + white-space:nowrap). La
+     pasamos a flujo normal, centrada y con ajuste de línea. */
+  .cg-spine{
+    position: static !important; left: auto !important; transform: none !important;
+    margin: 10px auto 0 !important; width: 100%; max-width: 100%;
+    box-sizing: border-box; white-space: normal; justify-content: center;
+  }
+  .cg-spine .st, .cg-spine .st .ss{ white-space: normal; }
+
+  /* How it works — "Business value out": los 4 ítems iban en fila (nowrap) y
+     "Monetizable value" se salía entre 761–820px. Apilamos etiqueta sobre
+     ítems y dejamos que los ítems fluyan a lo ancho. */
+  .os-outbar{ flex-direction: column; align-items: stretch; gap: 10px; }
+  .os-outbar .ob-label{ border-right: 0; padding-right: 0; margin-right: 0;
+    padding-bottom: 9px; border-bottom: 1px solid var(--fn-green-line); }
+  .os-outbar .ob-proof{ flex-wrap: wrap; gap: 8px 18px; }
+  .os-outbar .ob-pi{ padding-left: 0; }
+  .os-outbar .ob-pi + .ob-pi{ border-left: 0; }
+
+  /* Value Acceleration — la tira de distancia (Business demand → Measurable
+     value impact) y la leyenda se cortaban: las apilamos en vertical. */
+  .vd-track{ flex-direction: column; align-items: stretch; gap: 8px; }
+  .vd-from, .vd-to{ white-space: normal; flex: none; text-align: left; }
+  .vd-svg{ width: 100%; }
+  .vd-legend{ flex-wrap: wrap; gap: 8px 16px; }
+  .vd-head{ gap: 6px 12px; }
+
+  /* Hero — la ventana del console (width:94vw) no cabía junto al padding del
+     wrap entre 681–820px. La forzamos a 100% del contenedor. */
+  .hero .wrap{ padding-left: 24px; padding-right: 24px; }
+  .hero-stage, .vos-shell, .vos-window{ width: 100% !important; max-width: 100% !important; min-width: 0; }
+
+  /* Red de seguridad: ningún console fuerza scroll horizontal. */
+  .cg-stage, .va-cockpit, .hiw-panel, .vos-window{ max-width: 100%; }
+}
+
+/* Inputs >=16px: evita el zoom automático del formulario en iOS. */
+@media (max-width: 680px){
+  input, textarea, select{ font-size: 16px; }
+}
