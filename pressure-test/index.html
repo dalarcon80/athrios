@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Value Conversion Pressure Test | Athrios</title>
+<meta name="description" content="Can your Data & AI portfolio survive CFO scrutiny? 12 executive checkpoints. Scored by the weakest link.">
+<meta property="og:title" content="The Value Conversion Pressure Test">
+<meta property="og:description" content="Can your Data & AI portfolio survive CFO scrutiny? 12 executive checkpoints. Scored by the weakest link.">
+<meta property="og:url" content="https://www.athrios.com/pressure-test/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.athrios.com/assets/og-athrios.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink-base:#07090F; --ink-raised:#0C1117; --ink-card:#11161F; --ink-elevated:#1B222D;
+  --line:rgba(255,255,255,0.09); --line-strong:rgba(255,255,255,0.16);
+  --text-hi:#F4F1EA; --text-mid:#A4ACB8; --text-lo:#707A88;
+  --ember:#FF4A2E; --ember-bright:#FF6A4E; --ember-deep:#D5371C;
+  --ember-tint:rgba(255,74,46,0.12); --ember-line:rgba(255,74,46,0.40);
+  --green:#22C55E; --green-tint:rgba(34,197,94,0.10); --green-line:rgba(34,197,94,0.4);
+  --amber:#F59E0B; --amber-tint:rgba(245,158,11,0.10); --amber-line:rgba(245,158,11,0.4);
+  --font-display:'Archivo',sans-serif; --font-ui:'Inter',sans-serif; --font-mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--ink-base);color:var(--text-hi);font-family:var(--font-ui);min-height:100vh;}
+.bg-glow{position:fixed;width:900px;height:900px;border-radius:50%;filter:blur(140px);background:rgba(255,74,46,0.08);bottom:-400px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:40px 24px 80px;}
+.hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text-hi);}
+.brand svg{width:34px;height:34px;}
+.wm{font-weight:600;font-size:20px;}
+.tag{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--text-lo);}
+.title{font-family:var(--font-display);font-weight:700;font-size:clamp(36px,6.6vw,60px);line-height:1.06;letter-spacing:-0.025em;}
+.title em{font-style:normal;background:linear-gradient(100deg,var(--ember-bright),var(--ember) 60%,var(--ember-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.sub{margin-top:20px;font-size:18px;line-height:1.6;color:var(--text-mid);max-width:600px;}
+.sub b{color:var(--text-hi);}
+.filterline{margin-top:18px;font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.04em;color:var(--text-lo);}
+.pills{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap;}
+.pill{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;padding:8px 14px;border-radius:999px;background:var(--ink-elevated);border:1px solid var(--line-strong);color:var(--text-mid);}
+.pill.e{background:var(--ember-tint);border-color:var(--ember-line);color:var(--ember-bright);}
+.btn{display:inline-block;margin-top:34px;background:var(--ember);color:#0B0D0F;font-family:var(--font-display);font-weight:700;font-size:17px;padding:16px 32px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;text-decoration:none;}
+.btn:hover{background:var(--ember-bright);transform:translateY(-1px);}
+.note{margin-top:14px;font-size:13px;color:var(--text-lo);}
+.progress{height:4px;background:var(--ink-elevated);border-radius:99px;margin-bottom:36px;overflow:hidden;}
+.progress .fill{height:100%;background:linear-gradient(90deg,var(--ember-deep),var(--ember));border-radius:99px;transition:width .35s ease;}
+.dim-tag{font-family:var(--font-mono);font-size:12px;letter-spacing:0.14em;color:var(--ember-bright);}
+.q-num{font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--text-lo);margin-top:6px;}
+.q-text{margin-top:14px;font-family:var(--font-display);font-weight:700;font-size:clamp(24px,4.5vw,33px);line-height:1.2;letter-spacing:-0.015em;}
+.rf{margin-top:18px;display:flex;gap:10px;align-items:flex-start;background:var(--amber-tint);border:1px solid rgba(245,158,11,0.25);border-radius:10px;padding:14px 16px;}
+.rf .rl{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;color:var(--amber);flex-shrink:0;margin-top:3px;}
+.rf p{font-size:14.5px;line-height:1.55;color:var(--text-mid);font-style:italic;}
+.opts{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
+.opt{display:flex;gap:16px;align-items:center;background:var(--ink-card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;cursor:pointer;transition:all .15s;text-align:left;font-size:15.5px;color:var(--text-hi);width:100%;font-family:var(--font-ui);}
+.opt:hover{border-color:var(--ember-line);background:var(--ink-elevated);}
+.opt .k{font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--text-lo);background:var(--ink-elevated);border:1px solid var(--line-strong);border-radius:8px;padding:6px 11px;flex-shrink:0;}
+.opt:hover .k{color:var(--ember-bright);border-color:var(--ember-line);}
+.back{margin-top:22px;background:none;border:none;color:var(--text-lo);font-size:14px;cursor:pointer;font-family:var(--font-ui);}
+.back:hover{color:var(--text-mid);}
+.conf-row{margin-top:30px;display:grid;grid-template-columns:repeat(11,1fr);gap:8px;}
+.conf-row button{aspect-ratio:1;border-radius:10px;background:var(--ink-card);border:1px solid var(--line-strong);color:var(--text-mid);font-family:var(--font-mono);font-size:15px;cursor:pointer;transition:all .15s;}
+.conf-row button:hover{border-color:var(--ember-line);color:var(--ember-bright);background:var(--ink-elevated);}
+.gate-box{background:linear-gradient(180deg,var(--ink-card),var(--ink-raised));border:1px solid var(--ember-line);border-radius:18px;padding:36px;margin-top:8px;}
+.gate-box h3{font-family:var(--font-display);font-weight:700;font-size:28px;letter-spacing:-0.015em;line-height:1.15;}
+.gate-box h3 em{font-style:normal;color:var(--ember-bright);}
+.gate-box p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--text-mid);}
+.gate-box input{width:100%;margin-top:22px;background:var(--ink-base);border:1px solid var(--line-strong);border-radius:12px;padding:16px 18px;font-size:16px;color:var(--text-hi);font-family:var(--font-ui);outline:none;}
+.gate-box input:focus{border-color:var(--ember-line);}
+.gate-sel{width:100%;margin-top:12px;background:var(--ink-base);border:1px solid var(--line-strong);border-radius:12px;padding:16px 18px;font-size:14.5px;color:var(--text-mid);font-family:var(--font-ui);outline:none;appearance:none;}
+.gate-box .btn{width:100%;text-align:center;margin-top:16px;}
+.gate-err{display:none;margin-top:10px;font-size:13px;color:var(--ember-bright);}
+.micro{margin-top:12px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.04em;color:var(--text-lo);}
+/* results */
+.idx-card{background:linear-gradient(180deg,var(--ink-card),var(--ink-raised));border:1px solid var(--line-strong);border-radius:18px;padding:30px 34px;display:flex;gap:34px;align-items:center;flex-wrap:wrap;}
+.idx-card .iv{font-family:var(--font-display);font-weight:700;font-size:64px;letter-spacing:-0.02em;line-height:1;}
+.idx-card .il{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--text-lo);margin-bottom:8px;}
+.idx-card .itext{flex:1;min-width:240px;font-size:14px;line-height:1.6;color:var(--text-mid);}
+.idx-card .itext b{color:var(--ember-bright);}
+.res-band{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;padding:9px 16px;border-radius:999px;margin:26px 0 18px;}
+.res-band.b0{background:var(--ember-tint);border:1px solid var(--ember-line);color:var(--ember-bright);}
+.res-band.b1{background:var(--amber-tint);border:1px solid var(--amber-line);color:var(--amber);}
+.res-band.b2{background:var(--green-tint);border:1px solid var(--green-line);color:var(--green);}
+.res-title{font-family:var(--font-display);font-weight:700;font-size:clamp(30px,5.6vw,46px);line-height:1.08;letter-spacing:-0.02em;}
+.res-title em{font-style:normal;color:var(--ember-bright);}
+.mirror{margin-top:26px;background:linear-gradient(90deg,var(--ember-tint),var(--ink-card) 70%);border:1px solid var(--ember-line);border-radius:14px;padding:22px 26px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;}
+.mirror .mcol .ml{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--text-lo);}
+.mirror .mcol .mv{font-family:var(--font-display);font-weight:700;font-size:32px;margin-top:4px;}
+.mirror .mtext{flex:1;min-width:220px;font-size:14.5px;line-height:1.55;color:var(--text-mid);}
+.mirror .mtext b{color:var(--ember-bright);}
+.risk{margin-top:26px;border-left:4px solid var(--ember);background:linear-gradient(90deg,var(--ember-tint),transparent 80%);padding:22px 26px;}
+.risk .rt{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--ember-bright);margin-bottom:10px;}
+.risk p{font-size:15.5px;line-height:1.65;color:var(--text-hi);}
+.dims{margin-top:26px;display:flex;flex-direction:column;gap:14px;}
+.dimrow{background:var(--ink-card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;}
+.dimrow.weakest{border-color:var(--ember-line);background:linear-gradient(90deg,var(--ember-tint),var(--ink-card) 60%);}
+.dimrow .top{display:flex;justify-content:space-between;align-items:center;}
+.dimrow .nm{font-weight:600;font-size:15px;}
+.dimrow .wk{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;color:var(--ember-bright);}
+.dimrow .scv{font-family:var(--font-mono);font-weight:700;font-size:15px;}
+.bar{margin-top:10px;height:9px;background:var(--ink-elevated);border-radius:99px;overflow:hidden;}
+.bar .f{display:block;height:100%;border-radius:99px;transition:width .8s ease;}
+.brief{margin-top:30px;background:var(--ink-card);border:1px solid var(--line-strong);border-radius:16px;overflow:hidden;}
+.brief .bh{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--text-lo);padding:16px 22px;border-bottom:1px solid var(--line);}
+.brief table{width:100%;border-collapse:collapse;font-size:14px;}
+.brief td{padding:13px 22px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.brief td:first-child{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--text-lo);width:38%;padding-top:16px;}
+.brief tr:last-child td{border-bottom:none;}
+.brief td b{color:var(--ember-bright);}
+.accel{margin-top:16px;background:var(--ink-card);border:1px solid var(--line);border-radius:14px;padding:18px 24px;font-size:14.5px;line-height:1.6;color:var(--text-mid);}
+.accel b{color:var(--text-hi);}
+.cta-final{margin-top:36px;background:linear-gradient(180deg,var(--ink-card),var(--ink-raised));border:1px solid var(--ember-line);border-radius:18px;padding:34px;}
+.cta-final h3{font-family:var(--font-display);font-weight:700;font-size:26px;letter-spacing:-0.015em;line-height:1.2;}
+.cta-final h3 em{font-style:normal;color:var(--ember-bright);}
+.cta-final p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--text-mid);}
+.rule-foot{margin-top:48px;border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--text-lo);}
+.rule-foot b{color:var(--ember);}
+.hidden{display:none;}
+@media(max-width:560px){.opt{font-size:14px;padding:14px 16px;}.conf-row{grid-template-columns:repeat(6,1fr);}.idx-card .iv{font-size:48px;}}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="wrap">
+  <div class="hdr">
+    <a class="brand" href="https://www.athrios.com">
+      <svg viewBox="0 0 96 96" fill="none"><g stroke="#F4F1EA" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"><path d="M22 86 L48 60 L74 86"></path></g><path d="M48 12 L76 56 L20 56 Z" fill="#FF4A2E"></path></svg>
+      <span class="wm">Athrios</span>
+    </a>
+    <span class="tag">THE VALUE CONVERSION PRESSURE TEST</span>
+  </div>
+
+  <!-- INTRO -->
+  <section id="intro">
+    <h1 class="title">Can your Data &amp; AI portfolio survive <em>CFO scrutiny?</em></h1>
+    <p class="sub">In 3 minutes, identify the weakest link between business demand, execution, adoption and measurable value, <b>before your next steering committee exposes it.</b></p>
+    <p class="filterline">FOR LEADERS ACCOUNTABLE FOR VALUE, NOT DASHBOARDS.</p>
+    <div class="pills"><span class="pill">12 EXECUTIVE CHECKPOINTS</span><span class="pill">3 MINUTES</span><span class="pill e">SCORED BY THE WEAKEST LINK</span><span class="pill">CFO-PROOF LENS</span></div>
+    <button class="btn" onclick="show('calib')">Run the pressure test →</button>
+    <p class="note">No registration to start. Your result is calculated in your browser.</p>
+  </section>
+
+  <!-- CALIBRATION -->
+  <section id="calib" class="hidden">
+    <div class="dim-tag">BEFORE WE START · CALIBRATION</div>
+    <h2 class="q-text">If your CFO asked you today to prove the value of your Data &amp; AI portfolio, how confident are you in your answer?</h2>
+    <p class="sub" style="margin-top:14px;font-size:15px;">Be honest. We'll come back to this.</p>
+    <div class="conf-row" id="confrow"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="hidden">
+    <div class="progress"><div class="fill" id="pfill" style="width:0%"></div></div>
+    <div class="dim-tag" id="qdim"></div>
+    <div class="q-num" id="qnum"></div>
+    <h2 class="q-text" id="qtext"></h2>
+    <div class="rf"><span class="rl">RED FLAG</span><p id="qrf"></p></div>
+    <div class="opts">
+      <button class="opt" onclick="answer(0)"><span class="k">0</span><span id="opt0"></span></button>
+      <button class="opt" onclick="answer(1)"><span class="k">1</span><span id="opt1"></span></button>
+      <button class="opt" onclick="answer(2)"><span class="k">2</span><span id="opt2"></span></button>
+    </div>
+    <button class="back" id="backbtn" onclick="goBack()">← Back</button>
+  </section>
+
+  <!-- GATE -->
+  <section id="gate" class="hidden">
+    <div class="progress"><div class="fill" style="width:100%"></div></div>
+    <div class="gate-box">
+      <h3>Your Executive Brief is ready.<br><em>Unlock your result.</em></h3>
+      <p>Your Value Conversion Index, weakest-link diagnosis, CFO-risk statement and first corrective move.</p>
+      <input type="email" id="email" placeholder="Work email" autocomplete="email">
+      <select id="ttv" class="gate-sel">
+        <option value="">How long from funded priority to measurable value in production? (optional)</option>
+        <option value="<3m">Under 3 months</option>
+        <option value="3-9m">3-9 months</option>
+        <option value="9-18m">9-18 months</option>
+        <option value=">18m">More than 18 months</option>
+        <option value="unknown">Honestly, we don't know</option>
+      </select>
+      <div class="gate-err" id="gerr">Please enter a valid work email.</div>
+      <button class="btn" onclick="reveal()">Unlock my Executive Brief →</button>
+      <p class="micro">NO NEWSLETTER. NO GENERIC REPORT. JUST YOUR RESULT.</p>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="hidden">
+    <div class="idx-card">
+      <div><div class="il">VALUE CONVERSION INDEX</div><div class="iv" id="idxval"></div></div>
+      <div class="itext" id="idxtext"></div>
+    </div>
+    <span class="res-band" id="band"></span>
+    <h2 class="res-title" id="rtitle"></h2>
+    <div class="mirror" id="mirror"></div>
+    <div class="risk" id="risk"></div>
+    <div class="dims" id="dims"></div>
+    <div class="brief">
+      <div class="bh">YOUR EXECUTIVE BRIEF · FORWARD THIS</div>
+      <table id="brieftable"></table>
+    </div>
+    <div class="accel" id="accel"></div>
+    <div class="cta-final">
+      <h3>Your weakest link is where value will fail first.<br><em>Fix it before funding more demand.</em></h3>
+      <p>Bring one funded Data &amp; AI priority. In 30 minutes, we map the owner, value lever, adoption signal and proof mechanism required to make it CFO-defensible.</p>
+      <a class="btn" id="ctabtn" href="https://www.athrios.com/#contact">Book my Value Path Briefing →</a>
+      <p class="note">A working session, not a sales call. Led personally by the founder.</p>
+    </div>
+    <div class="rule-foot"><span>NO PROOF. <b>NO VALUE CLAIM.</b></span><span>ATHRIOS.COM</span></div>
+  </section>
+</div>
+
+<script>
+// ====== CONFIG ======
+const FORM_ENDPOINT = "/api/contact"; // Athrios serverless endpoint (Resend), same-origin lead capture
+const CALENDLY_URL  = ""; // Calendly link for the briefing button (falls back to /#contact)
+
+const DIMS = [
+  {id:'D1', name:'Demand & Ownership'},
+  {id:'D2', name:'Execution & Quality Gates'},
+  {id:'D3', name:'Adoption'},
+  {id:'D4', name:'Measurement & Monetization'}
+];
+const QS = [
+ {d:0,q:"Who is accountable for the business result if a funded capability is not adopted?",rf:"\"The 'sponsor' signed the budget in January and hasn't attended a single review since.\"",o:["No accountable owner","A sponsor exists, but adoption is not tied to their results","A business owner is accountable for the measurable outcome"]},
+ {d:0,q:"How is Data & AI demand prioritized before it gets funded?",rf:"\"The roadmap is a list of who asked first, or who asked loudest.\"",o:["First-come, or loudest voice","Informal ranking","Explicitly ranked by business value"]},
+ {d:0,q:"Which financial lever does each funded initiative move?",rf:"\"The business case says 'efficiency' and nobody in the room can name the number.\"",o:["None named","A vague benefit","A named lever, with a number"]},
+ {d:1,q:"Can your quality gates actually stop an initiative?",rf:"\"We have review meetings every other week. In two years, nothing has ever been sent back.\"",o:["There are no real gates","Gates exist, but nothing has ever failed one","Gates stop work, and have"]},
+ {d:1,q:"How is quality scored at each gate?",rf:"\"Governance scored 3/10, but the initiative shipped because the average came out to 7.\"",o:["Gut feel","By the average","By the weakest link"]},
+ {d:1,q:"What do experts actually review before approval?",rf:"\"The demo looked great. Nobody ever opened the pipeline or the model assumptions.\"",o:["The slides about the work","Occasional spot checks","The work itself, at every gate"]},
+ {d:2,q:"How do you measure adoption?",rf:"\"The usage report counts viewers. Nobody can name one decision that's made differently.\"",o:["We don't","Logins and views","Decisions changed, processes replaced"]},
+ {d:2,q:"When is the performance baseline captured?",rf:"\"We improved things significantly. Measured against nothing, by the team that built it.\"",o:["Never","Reconstructed after the fact","At day zero, before go-live"]},
+ {d:2,q:"Who operates the capability after go-live?",rf:"\"Every month-end close needs the one engineer who knows where the bodies are buried.\"",o:["The data team, indefinitely","Partial handover","The business runs it"]},
+ {d:3,q:"How are impact figures produced?",rf:"\"The ROI slide was built once, the week before the contract renewal.\"",o:["Once, for a deck","Ad-hoc, on request","In production, on a cadence"]},
+ {d:3,q:"Would your CFO sign the value figure as reported?",rf:"\"Finance keeps its own version of the number. It's smaller. It's the one that counts.\"",o:["Finance disputes it","Tolerated, not endorsed","Finance co-signs it"]},
+ {d:3,q:"What happens after a value path is proven?",rf:"\"Every initiative starts from zero. Same mistakes, new budget.\"",o:["Every initiative starts from zero","Informal reuse","Systematic 1 to n replication"]}
+];
+const BANDS = [
+ {label:'STATUS · CRITICAL VALUE LEAK', cls:'b0', title:'Critical <em>value leak.</em>', cap:39},
+ {label:'STATUS · UNSTABLE CONVERSION SYSTEM', cls:'b1', title:'Unstable <em>conversion system.</em>', cap:74},
+ {label:'STATUS · CONVERSION-READY', cls:'b2', title:'<em>Conversion-ready.</em>', cap:100}
+];
+const RISK = {
+ 'D1':{risk:"You are funding initiatives without anyone accountable for their business outcome. Decisions default to whoever asks loudest, and when results disappoint, accountability evaporates upward. Toward you.",
+       pattern:"Sponsors sign budgets; nobody owns adoption.",
+       fix:"No initiative gets funded without a named business owner, a financial lever, and a value ranking."},
+ 'D2':{risk:"Work ships that should have been stopped. Without gates that can fail an initiative, quality issues surface in production, where they are most expensive and most visible to the business.",
+       pattern:"Reviews happen; nothing is ever sent back.",
+       fix:"Install expert-governed gates scored by the weakest dimension, and let them stop work."},
+ 'D3':{risk:"You are funding capabilities that technically go live but fail to change business behavior. This creates inflated ROI claims, low business trust, and recurring dependency on the data team.",
+       pattern:"Go-lives celebrated; behavior unchanged.",
+       fix:"Define owner, baseline and adoption signal at day zero, before a single line of code."},
+ 'D4':{risk:"Value may exist, but it cannot be defended. Finance will eventually replace your number with its own, and that number is the one that will count.",
+       pattern:"ROI assembled manually, after delivery.",
+       fix:"Design production-cadence measurement your CFO would co-sign, before funding more delivery."}
+};
+const TTV={'<3m':"Under 3 months puts you in the top tier. Your opportunity is industrializing that speed into 1 to n patterns.",
+ '3-9m':"At 3-9 months, a governed value path typically compresses time-to-value by 20-40%. On your cycle, that's 1-3 months of value recovered per initiative.",
+ '9-18m':"At 9-18 months, you fund initiatives for over a year before any value can be proven. A 20-40% compression recovers 2-7 months per initiative, multiplied across your portfolio.",
+ '>18m':"Beyond 18 months, initiatives outlive the patience of the executives who funded them. This is where programs get cancelled with value still on the table.",
+ 'unknown':"Not knowing your time-to-value is itself the finding: what isn't measured can't be accelerated, or defended."};
+
+let i = 0; const ans = new Array(QS.length).fill(null); let conf = null;
+const $ = id => document.getElementById(id);
+function show(id){['intro','calib','quiz','gate','results'].forEach(s=>$(s).classList.add('hidden'));$(id).classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+(function(){const r=$('confrow');for(let c=0;c<=10;c++){const b=document.createElement('button');b.textContent=c;b.onclick=()=>{conf=c;start();};r.appendChild(b);}})();
+function start(){i=0;render();show('quiz');}
+function render(){
+  const q=QS[i];
+  $('pfill').style.width=(i/QS.length*100)+'%';
+  $('qdim').textContent='ASSESSMENT AREA 0'+(q.d+1)+' · '+DIMS[q.d].name.toUpperCase();
+  $('qnum').textContent='EXECUTIVE CHECKPOINT '+(i+1)+' / '+QS.length;
+  $('qtext').textContent=q.q;
+  $('qrf').textContent=q.rf;
+  ['opt0','opt1','opt2'].forEach((o,k)=>$(o).textContent=q.o[k]);
+  $('backbtn').style.visibility=i===0?'hidden':'visible';
+}
+function answer(v){ans[i]=v;if(i<QS.length-1){i++;render();}else{show('gate');}}
+function goBack(){if(i>0){i--;render();}}
+function scores(){return DIMS.map((d,di)=>{const vals=QS.map((q,qi)=>q.d===di?ans[qi]:null).filter(v=>v!==null);return Math.min(...vals);});}
+function reveal(){
+  const em=$('email').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){$('gerr').style.display='block';return;}
+  $('gerr').style.display='none';
+  const sc=scores(); const overall=Math.min(...sc); const ttv=$('ttv').value;
+  const raw=Math.round(ans.reduce((a,b)=>a+b,0)/24*100);
+  const idx=Math.min(raw, BANDS[overall].cap);
+  const weakest=sc.indexOf(Math.min(...sc));
+  if(FORM_ENDPOINT){try{fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,answers:ans,dimension_scores:sc,overall,index:idx,confidence:conf,time_to_value:ttv,source:'pressure-test'})});}catch(e){}}
+  const b=BANDS[overall];
+  $('idxval').textContent=idx+'/100';
+  $('idxval').style.color=overall===0?'var(--ember-bright)':overall===1?'var(--amber)':'var(--green)';
+  $('idxtext').innerHTML = overall<2
+    ? `<b>Capped by your weakest link: ${DIMS[weakest].name}.</b> Your raw answers add up to ${raw}/100, but we don't average. Neither will your CFO.`
+    : `Every dimension holds the line. Your next frontier is scale: turning one proven path into n.`;
+  $('band').className='res-band '+b.cls; $('band').textContent=b.label;
+  $('rtitle').innerHTML=b.title;
+  if(conf!==null){
+    const sev = (conf>=7&&overall===0)?'SEVERE':(conf>=5&&overall===0)||(conf>=8&&overall===1)?'HIGH':(Math.abs(conf/5-overall)>=1)?'MODERATE':'ALIGNED';
+    const gaptext = sev==='SEVERE'||sev==='HIGH' ? "You feel confident, but your operating system cannot prove the value. That is where executive credibility breaks."
+      : sev==='MODERATE' ? "Your instinct and your system disagree. One of them is wrong. Find out which before Finance does."
+      : "Perception and proof agree. The path forward is about scale, not repair.";
+    $('mirror').innerHTML=`<div class="mcol"><div class="ml">YOUR CONFIDENCE</div><div class="mv" style="color:var(--text-hi)">${conf}/10</div></div><div class="mcol"><div class="ml">YOUR SYSTEM SAYS</div><div class="mv" style="color:${overall===0?'var(--ember-bright)':overall===1?'var(--amber)':'var(--green)'}">${overall}/2</div></div><div class="mtext"><b>Confidence–Proof Gap: ${sev}.</b> ${gaptext}</div>`;
+  } else { $('mirror').style.display='none'; }
+  const R=RISK[DIMS[weakest].id];
+  if(overall<2){$('risk').innerHTML=`<div class="rt">EXECUTIVE RISK · ${DIMS[weakest].name.toUpperCase()}</div><p>${R.risk}</p>`;}else{$('risk').style.display='none';}
+  $('dims').innerHTML=DIMS.map((d,di)=>{
+    const v=sc[di]; const pct=[12,55,100][v];
+    const col=v===0?'var(--ember)':v===1?'var(--amber)':'var(--green)';
+    const wk=di===weakest&&v<2?'<span class="wk">◀ WEAKEST LINK</span>':'';
+    return `<div class="dimrow ${di===weakest&&v<2?'weakest':''}"><div class="top"><span class="nm">${d.id} · ${d.name} ${wk}</span><span class="scv" style="color:${col}">${v}/2</span></div><div class="bar"><span class="f" style="width:${pct}%;background:${col}"></span></div></div>`;
+  }).join('');
+  $('brieftable').innerHTML=`
+    <tr><td>VALUE CONVERSION INDEX</td><td><b>${idx}/100</b> · ${['Critical Value Leak','Unstable Conversion System','Conversion-Ready'][overall]}</td></tr>
+    <tr><td>WEAKEST LINK</td><td>${DIMS[weakest].id} · ${DIMS[weakest].name}</td></tr>
+    <tr><td>PRIMARY RISK</td><td>${overall<2?R.risk.split('.')[0]+'.':'Scale, not repair.'}</td></tr>
+    <tr><td>FAILURE PATTERN</td><td>${overall<2?R.pattern:'N/A'}</td></tr>
+    <tr><td>FIRST CORRECTIVE MOVE</td><td>${overall<2?R.fix:'Industrialize a proven path into 1 to n patterns.'}</td></tr>
+    <tr><td>RECOMMENDED SESSION</td><td>Value Path Briefing · 30 minutes, one funded priority</td></tr>`;
+  if(ttv&&TTV[ttv]){$('accel').innerHTML='<b>Your acceleration potential.</b> '+TTV[ttv];}else{$('accel').style.display='none';}
+  if(CALENDLY_URL){$('ctabtn').href=CALENDLY_URL;}
+  show('results');
+}
+</script>
+</body>
+</html>
