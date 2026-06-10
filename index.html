@@ -377,7 +377,7 @@
       <div class="bc-head">
         <span class="bc-eyebrow">Request a briefing</span>
         <span class="bc-line"></span>
-        <span class="bc-resp">A senior Athrios partner responds within two business days</span>
+        <span class="bc-resp">Daniel responds personally within two business days</span>
       </div>
       <form class="briefing-form" id="briefForm">
         <div class="bf-field"><label for="bfName">Full name</label><input id="bfName" type="text" name="name" autocomplete="name" required></div>
@@ -587,7 +587,7 @@
       .then(function(j){
         if (!j.success) throw new Error(j.message || 'not delivered');
         bf.classList.add('sent'); btn.textContent = 'Sent ✓';
-        st.textContent = 'Received. A senior Athrios partner will reach out within two business days.';
+        st.textContent = 'Received. Daniel will reach out personally within two business days.';
       })
       .catch(function(){
         btn.disabled = false; btn.textContent = 'Request briefing →';
