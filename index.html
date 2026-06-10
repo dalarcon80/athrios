@@ -480,30 +480,35 @@
 <script type="text/babel" src="howitworks.jsx"></script>
 <script src="products-console-v2.js"></script>
 <script>
-  // briefing form: real email delivery (FormSubmit) with mailto fallback
+  // briefing form → Athrios serverless API (/api/contact), which sends the email
+  // via Resend server-side. Same-origin: no third-party endpoint or address is
+  // ever exposed to the visitor. AJAX submit keeps the in-page UX.
   (function(){
     var bf = document.getElementById('briefForm'); if (!bf) return;
     var btn = document.getElementById('briefBtn'), st = document.getElementById('briefStatus');
-    var TO = 'daniel.alarconr@outlook.com';
     bf.addEventListener('submit', function(ev){
       ev.preventDefault();
       var fd = new FormData(bf), d = {};
       fd.forEach(function(v,k){ d[k]=v; });
       st.classList.remove('err'); st.textContent = '';
       btn.disabled = true; btn.textContent = 'Sending…';
-      fetch('https://formsubmit.co/ajax/' + TO, {
+      fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ _subject: 'Athrios — briefing request: ' + (d.priority || ''), _template: 'table', _captcha: 'false',
-          name: d.name, email: d.email, organization: d.org || '—', business_priority: d.priority })
+        body: JSON.stringify({
+          name: d.name,
+          email: d.email,
+          organization: d.org || '—',
+          business_priority: d.priority || '—'
+        })
       }).then(function(r){ return r.json(); })
       .then(function(j){
-        if (String(j.success) !== 'true') throw new Error(j.message || 'not delivered');
+        if (!j.success) throw new Error(j.message || 'not delivered');
         bf.classList.add('sent'); btn.textContent = 'Sent ✓';
         st.textContent = 'Received. A senior Athrios partner will reach out within two business days.';
       })
       .catch(function(){
-        btn.disabled = false; btn.innerHTML = 'Request briefing →';
+        btn.disabled = false; btn.textContent = 'Request briefing →';
         st.classList.add('err');
         st.textContent = 'Your request could not be sent right now — please try again in a moment.';
       });
