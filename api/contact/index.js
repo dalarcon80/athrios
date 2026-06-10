@@ -21,11 +21,14 @@ module.exports = async function (context, req) {
     if (!email) return json(400, { success: false, message: 'Missing required fields' });
     const DIMS = ['Demand & Ownership', 'Execution & Quality Gates', 'Adoption', 'Measurement & Monetization'];
     const sc = Array.isArray(b.dimension_scores) ? b.dimension_scores : [];
+    const weakIdx = sc.length ? sc.indexOf(Math.min.apply(null, sc)) : -1;
+    const weakest = weakIdx >= 0 ? DIMS[weakIdx] + ' (' + sc[weakIdx] + '/2)' : '—';
     subject = 'Athrios — pressure test lead: ' + (b.index != null ? b.index + '/100' : 'new');
     html =
       '<h2>New pressure-test lead — Athrios</h2>' +
       '<p><strong>Work email:</strong> ' + esc(email) + '</p>' +
       '<p><strong>Value Conversion Index:</strong> ' + esc(b.index) + '/100 (band ' + esc(b.overall) + '/2)</p>' +
+      '<p><strong>Weakest link:</strong> ' + esc(weakest) + '</p>' +
       '<p><strong>Self-rated confidence:</strong> ' + esc(b.confidence) + '/10</p>' +
       '<p><strong>Time to value:</strong> ' + esc(b.time_to_value || '—') + '</p>' +
       '<p><strong>Dimension scores:</strong> ' + DIMS.map((n, i) => esc(n) + ': ' + esc(sc[i])).join(' · ') + '</p>' +
