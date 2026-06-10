@@ -305,7 +305,11 @@
 <style>
   #founder .f-body p{margin:0 0 14px;max-width:680px;font-size:clamp(15px,1.35vw,17px);line-height:1.65;color:var(--text-mid)}
   #founder .f-body p b{color:var(--text-hi);font-weight:600}
-  #founder .f-proofline{margin:22px 0 26px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-lo)}
+  #founder .f-gap b{font-size:clamp(17px,1.6vw,21px)}
+  #founder .f-mantra{margin:24px 0 28px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-family:var(--font-display);font-weight:800;font-size:clamp(18px,2.1vw,25px);letter-spacing:-0.015em;color:var(--text-hi)}
+  #founder .f-mantra .fm-sep{color:var(--ember)}
+  #founder .f-mantra .fm-out{color:var(--fn-green)}
+  @media (max-width:640px){#founder .f-mantra{flex-direction:column;align-items:flex-start;gap:6px}#founder .f-mantra .fm-sep{display:none}}
   #founder .f-cta{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
   #founder .f-track{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--line-strong)}
   #founder .f-track:hover{color:var(--text-hi)}
@@ -322,15 +326,21 @@
 <section class="as as-grid" id="founder" data-screen-label="Founder">
   <div class="wrap">
     <div class="as-head r-up">
-      <div class="eyebrow">One house, one signal</div>
+      <div class="eyebrow">Founder</div>
       <h2>Built by an operator,<br>not a consultancy.</h2>
     </div>
     <div class="f-body r-up">
-      <p>Athrios was founded by Daniel Alarc&oacute;n, a Data &amp; AI executive with 20 years turning enterprise demand into production outcomes across banking, oil &amp; gas, retail, airlines, utilities and healthcare.</p>
-      <p>Before Athrios, he designed and scaled governed AI operating models adopted across 17+ enterprise accounts, led core banking modernization across 6 financial institutions and 100+ applications, and built reusable Generative AI assets for enterprise delivery.</p>
-      <p>After watching enterprise teams fund priorities, build platforms and launch AI pilots that never converted into provable value, Daniel built Athrios as the operating model he could not find in the market: business need in, governed execution path, measurable value out.</p>
-      <p><b>Every executive briefing is led by Daniel. No juniors. No hand-offs.</b></p>
-      <div class="f-proofline">20 YEARS &middot; 17+ ENTERPRISE ACCOUNTS &middot; 6 BANKS MODERNIZED &middot; 100+ APPLICATIONS &middot; TEAMS OF 300+ &middot; 5 REGIONS</div>
+      <p>Athrios was created by Daniel Alarc&oacute;n after 20 years leading Data, AI and modernization programs inside complex enterprise environments.</p>
+      <p>The pattern was clear: companies were funding priorities, building platforms and launching AI pilots &mdash; but too often, value was not converting into measurable business outcomes.</p>
+      <p class="f-gap"><b>Athrios exists to close that gap.</b></p>
+      <div class="f-mantra">
+        <span>Business need in.</span>
+        <span class="fm-sep">&rarr;</span>
+        <span>Governed execution path.</span>
+        <span class="fm-sep">&rarr;</span>
+        <span class="fm-out">Measurable value out.</span>
+      </div>
+      <p><b>Every executive briefing is led by Daniel.<br>No juniors. No hand-offs.</b></p>
       <div class="f-cta">
         <a class="btn btn-primary" href="#contact" style="height:45px">Book a 30-minute briefing</a>
         <a class="f-track" href="https://www.dalarcon.info" target="_blank" rel="noopener">Full track record &rarr;</a>
