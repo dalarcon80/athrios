@@ -20,7 +20,16 @@ module.exports = async function (context, req) {
 
   const key = process.env.RESEND_API_KEY;
   if (!key) {
-    return json(500, { success: false, message: 'Email service not configured' });
+    return json(500, {
+      success: false,
+      message: 'Email service not configured',
+      _diag: {
+        present: 'RESEND_API_KEY' in process.env,
+        len: (process.env.RESEND_API_KEY || '').length,
+        resendKeys: Object.keys(process.env).filter(function (k) { return /resend/i.test(k); }),
+        totalEnv: Object.keys(process.env).length
+      }
+    });
   }
 
   const html =
